@@ -32,7 +32,16 @@ export function CreatePoint(){
   const [selectedUf, setSelectedUf] = useState('0');
   const [selectedCity, setSelectedCity] = useState('0');
 
+  const [initialPosition, setInitialPosition] = useState<[number, number]>([0,0]);
   const [selectedPoistion, setSelectedPoistion] = useState<[number, number]>([0,0]);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(position => {
+      const {latitude, longitude} = position.coords;
+
+      setInitialPosition([latitude, longitude]);
+    })
+  }, [])
 
   useEffect(()=> {
     api.get('items').then(response => {
@@ -78,9 +87,7 @@ export function CreatePoint(){
       event.latlng.lng
     ])
   }
-
   
-  console.log(selectedPoistion)
   return(
     <div id="page-create-point">
       <header>
@@ -145,7 +152,7 @@ export function CreatePoint(){
           </legend>
 
           <Map 
-            center={{lat: -3.0934418, lng: -59.9912741}} 
+            center={initialPosition} 
             zoom={15}
             onClick={handleMapClick}
           >
