@@ -1,8 +1,11 @@
+import { FiArrowLeft } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import {MapContainer, TileLayer} from 'react-leaflet';
+
 import './styles.css';
 
 import logo from '../../assets/logo.svg';
-import { Link } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+
 
 export function CreatePoint(){
   return(
@@ -67,6 +70,13 @@ export function CreatePoint(){
             <h2>Endereço</h2>
             <span>Selecione o endereço no mapa</span>
           </legend>
+
+          <MapContainer center={[-3.1192605,-60.0036451]} zoom={15}>
+            <TileLayer
+                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+          </MapContainer>
 
           <div className="field-group">
             <div className='field'>
