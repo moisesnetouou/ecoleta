@@ -1,5 +1,5 @@
 import { StatusBar } from 'react-native';
-import { Home } from './src/pages/Home';
+import Routes from './src/routes';;
 import {Roboto_400Regular, Roboto_500Medium} from '@expo-google-fonts/roboto';
 import {Ubuntu_700Bold, useFonts} from '@expo-google-fonts/ubuntu';
 import AppLoading from 'expo-app-loading';
@@ -23,7 +23,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Home />
+      <Routes />
     </>
   );
 }
