@@ -69,9 +69,9 @@ export function Points(){
     navigation.goBack();
   }
 
-  function handleNavigateToDetail(){
+  function handleNavigateToDetail(id: number){
     //@ts-ignore
-    navigation.navigate('Detail')
+    navigation.navigate('Detail', {point_id: id})
   }
 
   function handleSelectItem(id: number){
@@ -120,7 +120,7 @@ export function Points(){
                     latitude: point.latitude,
                     longitude: point.longitude
                   }}
-                  onPress={handleNavigateToDetail}
+                  onPress={() => handleNavigateToDetail(point.id)}
                 >
                   <View style={styles.mapMarkerContainer}>
                     <Image 
